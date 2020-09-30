@@ -2,6 +2,10 @@
 
 using namespace std;
 
+inline char toChar(int i) {
+	return static_cast<char>('a' + i);
+}
+
 class trie {
 public:
 	char val;
@@ -53,18 +57,15 @@ bool search(string word, trie* root, int index) {
 
 void preorder_print(trie* root, string word) {
 	if (root->we) {
-		word+=root->val;
-		cout << word<<"\n";
+		cout << word << endl;
 	}
-	word+=root->val;
 
 	for (int i = 0; i < 26; i++) {
 		if (root->child[i])
 		{
-			preorder_print(root->child[i], word);
+			preorder_print(root->child[i], word + toChar(i));
 		}
 	}
-	return;
 }
 
 int main() {
