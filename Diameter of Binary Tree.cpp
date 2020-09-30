@@ -1,11 +1,13 @@
+unordered_map<TreeNode*, int> h;
+
 int height(TreeNode* root) {
     if (h.count(root))
         return h[root];
 
     if (root == NULL)
-        return 0;
+        return h[root] = 0;
 
-    return 1 + max(height(root->left), height(root->right));
+    return h[root] = 1 + max(height(root->left), height(root->right));
 }
 
 class Solution {
